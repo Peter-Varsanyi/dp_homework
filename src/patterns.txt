@@ -1,0 +1,15 @@
+Template method:
+
+food - hotdog/chips ezek adjak vissza az aktualis termek alap ertekeit
+
+Command:
+
+A fifo amely kiszolgalja a felhasznalokat
+
+Strategy:
+
+Kulonbozo strategiakat lehet alkalmazni a termekeknel
+
+Builder:
+
+static inner builder az orderben, hogy egyszerusitse az ordereket elkesziteset

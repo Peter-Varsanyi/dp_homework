@@ -7,12 +7,12 @@ public class Chips extends Food {
 
 	HappinessStrategy strategy;
 
-	public Chips(HappinessStrategy strategy) {
+	public Chips(final HappinessStrategy strategy) {
 		this.strategy = strategy;
 	}
 
 	@Override
-	public double calculateHappiness(double clientHappiness, Happiness happiness) {
+	public double calculateHappiness(final double clientHappiness, final Happiness happiness) {
 		return strategy.getClientHappiness(clientHappiness, happiness);
 	}
 

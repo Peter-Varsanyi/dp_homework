@@ -6,21 +6,24 @@ import java.util.List;
 import javax.naming.directory.InvalidAttributesException;
 
 import com.food.ingredients.FoodExtra;
-import com.food.strategy.HappinessStrategy;
 
 public class Order {
 
-	private List<FoodExtra> extraList;
-	private Food food;
+	private final List<FoodExtra> extraList;
+	private final Food food;
 
-	private Order(Builder b) {
+	private Order(final Builder b) {
 		this.extraList = b.extraList;
 		this.food = b.food;
 
-		for (FoodExtra extra : extraList) {
-			this.food.addExtra(extra);
+		for (final FoodExtra extra : b.extraList) {
+			food.addExtra(extra);
 		}
 
+	}
+
+	public void execute() {
+		System.out.println("Serving food: " + food);
 	}
 
 	public Food getFood() {
@@ -28,10 +31,14 @@ public class Order {
 	}
 
 	public static class Builder {
-		private List<FoodExtra> extraList = new ArrayList<>();
+		private final List<FoodExtra> extraList = new ArrayList<>();
 		private Food food;
 
-		public Builder addFood(Food newFood) {
+		public Builder() {
+
+		}
+
+		public Builder addFood(final Food newFood) {
 			if (food != null) {
 				throw new IllegalArgumentException("You must not specifiy two food type for one order");
 			}
@@ -39,7 +46,7 @@ public class Order {
 			return this;
 		}
 
-		public Builder addExtra(FoodExtra extra) {
+		public Builder addExtra(final FoodExtra extra) {
 			extraList.add(extra);
 			return this;
 		}
